@@ -52,7 +52,7 @@ magnitude more markers.
 
 ### Sexes
 
-The first thing we check is the sexes of the mice. One can look for
+The first thing we check is the sexes of the mice. One can look at
 the proportion of homozygous genotype calls on the X chromosome, but
 we find it most informative to look at the SNP array intensities for
 SNPs on the X and Y chromosomes.
@@ -210,10 +210,10 @@ highest proportion of heterozygous calls on the X chromosome:
 sort(phetX[do$covar$Sex=="M" & pmis < 0.05], decreasing=TRUE)[1:5]
 ```
 
-The highest is `r round(max(phetX[sex=="M" & pmis < 0.05])*100)`%,
+The highest is `r round(max(phetX[do$covar$Sex=="M" & pmis < 0.05], 1)*100)`%,
 so it's probably not a problem.
 
-Among females with <5% missing genotypes, here are the sex with the
+Among females with <5% missing genotypes, here are the six with the
 lowest proportion of heterozygous calls on the X chromosome:
 
 ```{r females_low_het}
@@ -367,7 +367,7 @@ Histogram of the error LOD scores. We really only care about values
 hist(errlod, breaks=200, xlab="Error LOD score", ylab="", yaxt="n", main="")
 ```
 
-Histogram of proportion of problems by individual. No individual has
+Histogram of numbers of problems by individual. No individual has
 more than `r max(rowSums(errlod>4))` error LOD scores >4.
 
 ```{r hist_errorlod_byind}
